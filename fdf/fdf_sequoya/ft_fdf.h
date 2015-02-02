@@ -6,7 +6,7 @@
 /*   By: rbaum <rbaum@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 15:33:11 by rbaum             #+#    #+#             */
-/*   Updated: 2015/02/02 08:04:17 by rbaum            ###   ########.fr       */
+/*   Updated: 2015/02/02 10:44:45 by rbaum            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		ft_get_tab(t_all *all);
 void		ft_get_good_tab(t_all *all);
 t_coord		*ft_new_coord(int x, int y, int z, int size_x, int size_y);
 t_coord		***ft_get_coord(t_all *all);
-void		initial_inc(t_env *e);
+void		initial_inc(t_env *e, int i, int j);
 void		pixel_put(t_env *e, int i, int j);
 void		draw_x(t_env *e);
 void		draw_y(t_env *e);

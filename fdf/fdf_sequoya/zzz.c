@@ -6,7 +6,7 @@
 /*   By: rbaum <rbaum@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 16:54:10 by rbaum             #+#    #+#             */
-/*   Updated: 2015/02/02 06:31:43 by rbaum            ###   ########.fr       */
+/*   Updated: 2015/02/02 11:29:44 by rbaum            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int expose_hook(t_env *e)
 
 int key_hook(int keycode, t_env *e)
 {
-		mlx_clear_window(e->mlx, e->win);
+	mlx_clear_window(e->mlx, e->win);
 	if (keycode == 65307)
 		exit(0);
 	if (keycode == 65361)
@@ -37,9 +37,9 @@ int key_hook(int keycode, t_env *e)
 	if (keycode == 65451)
 		e->zoom += 1;
 	if (keycode == 65365)
-		e->zh += 2;
+		e->zh += 1;
 	if (keycode == 65366)
-		e->zh -= 2;
+		e->zh -= 1;
 	expose_hook(e);
 	return (0);
 }

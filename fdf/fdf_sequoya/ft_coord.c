@@ -6,7 +6,7 @@
 /*   By: rbaum <rbaum@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 11:29:56 by rbaum             #+#    #+#             */
-/*   Updated: 2015/02/02 04:42:12 by rbaum            ###   ########.fr       */
+/*   Updated: 2015/02/02 11:29:32 by rbaum            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ t_coord     *ft_new_coord(int x, int y, int z, int size_x, int size_y)
 	coord->size_x = (size_x);
 	coord->size_y = (size_y);
 	coord->z = z;
-	coord->x = x;//* INC;
-	coord->y = y;//  * INC;
+	coord->x = x;
+	coord->y = y;
 	return (coord);
 }
 
