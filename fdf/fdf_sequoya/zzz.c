@@ -6,7 +6,7 @@
 /*   By: rbaum <rbaum@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 16:54:10 by rbaum             #+#    #+#             */
-/*   Updated: 2015/02/02 11:29:44 by rbaum            ###   ########.fr       */
+/*   Updated: 2015/02/03 20:09:02 by rbaum            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ int key_hook(int keycode, t_env *e)
 
 void ft_mlx(t_env *e)
 {
+
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, WIDTH, HEIGHT, "fdf");
-	mlx_key_hook(e->win, key_hook, e);
+//	mlx_key_hook(e->win, key_hook, e);
 	mlx_expose_hook(e->win, expose_hook, e);
+	mlx_hook(e->win,KeyPress,KeyRelease, key_hook, e);
 	mlx_loop(e->mlx);
 }
 
@@ -70,3 +72,6 @@ int main(int ac, char **av)
 	ft_mlx(e);
 	return (0);
 }
+/*
+libft/libft.a -L/usr/x11/lib -lmlx -lXext -lX11 ft_coord.c  zzz.c draw.c -I /opt/X11/include/X11
+*/

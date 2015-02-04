@@ -6,14 +6,17 @@
 /*   By: rbaum <rbaum@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/10 15:33:11 by rbaum             #+#    #+#             */
-/*   Updated: 2015/02/02 10:44:45 by rbaum            ###   ########.fr       */
+/*   Updated: 2015/02/04 06:29:04 by rbaum            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <mlx.h>
-#include <fcntl.h>
-#include "libft/libft.h"
+#ifndef FT_FDF_H
+# define FT_FDF_H
+# include <math.h>
+# include <X.h>
+# include <mlx.h>
+# include <fcntl.h>
+# include "libft/libft.h"
 
 # define STARTX (200)
 # define STARTY (100)
@@ -22,14 +25,8 @@
 # define WIDTH 2000
 # define OFF e->off
 # define YOFF e->off2
-
-# define XA e->inc->x1 - e->inc->y1
-# define YA -(e->inc->z) + (e->inc->x1 + e->inc->y1)/2 
-# define XB e->inc->x2 - e->inc->y1 
-# define YB - (e->inc->z2) + (e->inc->x2 + e->inc->y1)/2 
-# define XC e->inc->x1 - e->inc->y2
-# define YC - (e->inc->z3) + (e->inc->x1 + e->inc->y2)/2 
-
+# define SX1 e->coord[i][0]->size_x
+# define SX2 e->coord[i + 1][0]->size_x
 typedef struct		s_coord
 {
 	int				x;
@@ -50,9 +47,7 @@ typedef struct		s_inc
 	int		z3;
 	int		color;
 	int		color2;
-
 }					t_inc;
-
 
 typedef struct		s_env
 {
@@ -60,14 +55,18 @@ typedef struct		s_env
 	void			*win;
 	void			*content;
 	t_coord			***coord;
-	t_coord			***real;
 	t_inc			*inc;
 	int				off;
 	int				off2;
 	int				zoom;
 	int				zh;
+	int				xa;
+	int				xb;
+	int				xc;
+	int				ya;
+	int				yb;
+	int				yc;
 }					t_env;
-
 
 typedef struct		s_all
 {
@@ -87,35 +86,9 @@ void		draw_y(t_env *e);
 int			draw(t_env *e);
 void		iso(t_env *e, t_all *all);
 void		vect_AB(int x1, int y1, int x2, int y2, t_env *e);
+void		ft_put_pixel(t_env *e, int i, int j);
+void		ft_calc_pixel(t_env *e, int i, int j);
+int			fdf_draw_line_t1(t_env *e);
+int			fdf_draw_line_t2(t_env *e);
 
-
-/*
-** Commentaires et choses a faire **
-
-open
-◦ read
-◦ write
-8Projet d’Infographie fdf
-◦ close
-◦ malloc
-◦ free
-◦ perror
-◦ strerror
-◦ exit
-◦ toutes les fonctions de la lib math (-lm et man 3 math)
-◦ toutes les fonctions de la minilibX bien sûr
-
-************man****************
-
- mlx_new_window
- mlx_pixel_put
- mlx_new_image
- mlx_loop
-
- ***********MAKE***************
-
-gcc ft_fdf.c -L/usr/x11/lib -lmlx -lXext -lX11
-
-
-
- */
+#endif

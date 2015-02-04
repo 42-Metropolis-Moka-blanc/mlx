@@ -6,7 +6,7 @@
 /*   By: rbaum <rbaum@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 11:29:56 by rbaum             #+#    #+#             */
-/*   Updated: 2015/02/02 11:29:32 by rbaum            ###   ########.fr       */
+/*   Updated: 2015/02/04 07:01:53 by rbaum            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,21 @@ void        ft_get_tab(t_all *all)
 		exit(0);
 	}
 	while (get_next_line(fd, &line))
-		all->y++;
+			all->y++;
 	close(fd);
 	fd = open(all->av[1], O_RDONLY);
 	all->tab = (char **)malloc(sizeof(char *) * (all->y + 1));
 	while (get_next_line(fd, &line))
-		all->tab[i++] = line;
+	{
+		if (line[0] != '\0')
+		{
+			all->tab[i++] = line;
+		ft_putendl(all->tab[i - 1]);
+		}
+		else
+			all->y--;
+			
+	}
 	close(fd);
 }
 
@@ -46,7 +55,8 @@ t_coord     *ft_new_coord(int x, int y, int z, int size_x, int size_y)
 	coord->size_y = (size_y);
 	coord->z = z;
 	coord->x = x;
-	coord->y = y;
+	if (y >= 1)
+		coord->y = y;
 	return (coord);
 }
 
@@ -55,25 +65,38 @@ t_coord     ***ft_get_coord(t_all *all)
 	int     i;
 	int     j;
 	char    **tmp;
-	int     tmp_size;
+	int     size_x;
 	t_coord ***coord;
 
 	i = 0;
 	ft_get_tab(all);
-	coord = (t_coord ***)malloc(sizeof(t_coord **) * all->y + 1);
+ 	coord = (t_coord ***)malloc(sizeof(t_coord **) * all->y + 1); 
 	while (i < all->y)
 	{
 		tmp = ft_strsplit(all->tab[i], ' ');
-		tmp_size = 0;
-		while (tmp[tmp_size] != '\0')
-			tmp_size++;
-		coord[i] = (t_coord **)malloc(sizeof(t_coord*) * (tmp_size + 1));
+		size_x = 0;
+		if (tmp[size_x] == 0) 
+			size_x++;
+		while (tmp[size_x] != '\0')
+			size_x++;
 		j = -1;
-		while (++j < tmp_size)
-			coord[i][j] = ft_new_coord(j, i, ft_atoi(tmp[j]), tmp_size, all->y);
+		coord[i] = (t_coord **)malloc(sizeof(t_coord*) * (size_x + 1));
+		while (++j < size_x)
+		{
+			if (tmp[j] != '\0' && tmp[j][0] != '\n')
+				coord[i][j] = ft_new_coord(j, i, ft_atoi(tmp[j]), size_x, all->y);
+		}
 		free(tmp);
-		i++;
-	}
+		i++; 
+ 	} 
 	tmp = NULL;
 	return (coord);
 }
+
+/*
+		if (tmp == NULL)
+		{
+			ft_putendl("wrong map");
+			exit(0);
+		}
+*/
