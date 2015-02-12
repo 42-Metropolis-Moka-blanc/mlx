@@ -6,13 +6,14 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/29 15:52:08 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/02 11:10:21 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/04 10:02:34 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBMLX_H
 # define LIBMLX_H
 
+#include <X.h>
 #include <mlx.h>
 #include <math.h>
 #include <stdio.h>
@@ -22,15 +23,56 @@
 #include "../libft/libft.h"
 
 # define INC e->zoom
-# define OFF e->off
-# define YOFF e->off2
+# define OFF 1.00 * e->off
+# define YOFF 1.00 * e->off2
 
-# define XA e->inc->x1 - e->inc->y1
-# define YA -(e->inc->z) + (e->inc->x1 + e->inc->y1)/2 
-# define XB e->inc->x2 - e->inc->y1 
-# define YB - (e->inc->z2) + (e->inc->x2 + e->inc->y1)/2 
-# define XC e->inc->x1 - e->inc->y2
-# define YC - (e->inc->z3) + (e->inc->x1 + e->inc->y2)/2
+# define T e->rot
+# define X1 e->inc->x1
+# define Y1 e->inc->y1
+# define X2 e->inc->x2
+# define Y2 e->inc->y2
+# define SIZX e->coord[0][0]->size_x
+# define SIZY e->coord[0][0]->size_y
+
+# define XAR1(x) (x*(cos(T)))       
+# define YAR1(y) (y*(sin(T)))		
+# define XAR2(x) (x*(cos(T+M_PI/2)))     
+# define YAR2(y) (y*(sin(T+M_PI/2)))
+
+// # define XAR X1*(cos(T)+cos(T+M_PI/2))        /* x = (R - l/2) * (cos(t) + cos(t + pi / 2)) */
+// # define YAR Y1*(sin(T)+sin(T+M_PI/2))		  y = R * (sin(t) + sin(t + pi / 2)) 
+// # define XBR X2*(cos(T)+cos(T+M_PI/2))
+// # define YBR Y1*(sin(T)+sin(T+M_PI/2))
+// # define XCR X1*(cos(T)+cos(T+M_PI/2))
+// # define YCR Y2*(sin(T)+sin(T+M_PI/2))
+
+/* # define XAR (X1-(e->max_x)/2)*(cos(T)+cos(T+M_PI/2)) */
+/* # define YAR (Y1-(e->max_y)/2)*(sin(T)+sin(T+M_PI/2)) */
+/* # define XBR (X2-(e->max_x)/2)*(cos(T)+cos(T+M_PI/2)) */
+/* # define YBR (Y1-(e->max_y)/2)*(sin(T)+sin(T+M_PI/2)) */
+/* # define XCR (X1-(e->max_x)/2)*(cos(T)+cos(T+M_PI/2)) */
+/* # define YCR (Y2-(e->max_y)/2)*(sin(T)+sin(T+M_PI/2)) */
+
+# define XA 0.5*XAR1(X1) + 0.5*XAR2(Y1)
+# define YA -(e->inc->z) + (0.5/2*YAR1(X1)) + 0.5/2*YAR2(Y1)
+# define XB 0.5*XAR1(X2) + 0.5*XAR2(Y1) 
+# define YB -(e->inc->z2) + 0.5/2*YAR1(X2) + 0.5/2*YAR2(Y1) 
+# define XC 0.5*XAR1(X1) + 0.5*XAR2(Y2) 
+# define YC -(e->inc->z3) + 0.5/2*YAR1(X1) + 0.5/2*YAR2(Y2)
+
+// # define XA 0.5*XAR - 0.75*YAR
+// # define YA -(e->inc->z) + (0.5/2*XAR) + (0.75/2*YAR)
+// # define XB 0.5*XBR - 0.75*YAR 
+// # define YB - (e->inc->z2) + 0.5/2*XBR + 0.75/2*YAR 
+// # define XC 0.5*XCR - 0.75*YCR
+// # define YC - (e->inc->z3) + 0.5/2*XCR + 0.75/2*YCR
+
+// #define XA XAR
+// #define YA YAR
+// #define XB XBR
+// #define YB YBR
+// #define XC XCR
+// #define YC YCR
 
 typedef struct		s_coord
 {
@@ -75,7 +117,10 @@ typedef struct		s_env
 	int				off;
 	int				off2;
 	int				zoom;
+	int				max_x;
+	int				max_y;
 	int				zh;
+	float			rot;
 }					t_env;
 
 typedef struct		s_all
