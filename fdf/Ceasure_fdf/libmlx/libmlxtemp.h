@@ -6,13 +6,14 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/29 15:52:08 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/15 06:20:25 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/13 19:37:27 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBMLX_H
 # define LIBMLX_H
 
+#include <X.h>
 #include <mlx.h>
 #include <math.h>
 #include <stdio.h>
@@ -112,11 +113,9 @@ typedef struct		s_env
 	void			*mlx;
 	void			*win;
 	void			*img;
-	unsigned long	color;
 	t_coord			***coord;
 	t_inc			*inc;
 	int				off;
-	int				endian;
 	int				off2;
 	int				zoom;
 	int				max_x;
@@ -124,7 +123,7 @@ typedef struct		s_env
 	int				zh;
 	int				bpp;
 	int				s_line;
-	int				z;
+	int				endian;
 	float			rot;
 	char			*data;
 }					t_env;

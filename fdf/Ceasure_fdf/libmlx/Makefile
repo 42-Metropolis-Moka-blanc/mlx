@@ -7,6 +7,7 @@ SRCS=		vect.c        \
 			vect_octant_1_4.c  \
 			vect_octant_5_8.c   \
 			ring2.c				 \
+			mlx_pixel_wput.c      \
 
 
 

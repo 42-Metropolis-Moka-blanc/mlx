@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 12:08:17 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/02 11:24:43 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/15 06:17:03 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void octant_5(int x1, int y1, int x2, int y2, t_env *c)
 	dy = dy * 2;
 	while (x1 != x2)
 	{
-		mlx_pixel_put(c->mlx, c->win, x1, y1, 0x7FFF00);
+		mlx_pixel_wput(c, x1, y1, c->color);
 		e = e - dy;
 		if (e >= 0)
 		{
@@ -51,7 +51,7 @@ void octant_6(int x1, int y1, int x2, int y2, t_env *c)
 	dx = dx * 2;
 	while (y1 != y2)
 	{
-		mlx_pixel_put(c->mlx, c->win, x1, y1, 0x7FFF00);
+		mlx_pixel_wput(c, x1, y1, c->color);
 		e = e - dx;
 		if (e >= 0)
 		{
@@ -76,7 +76,7 @@ void octant_7(int x1, int y1, int x2, int y2, t_env *c)
 	dx = dx * 2;
 	while (y1 != y2)
 	{
-		mlx_pixel_put(c->mlx, c->win, x1, y1, 0x7FFF00);
+		mlx_pixel_wput(c, x1, y1, c->color);
 		e = e + dx;
 		if (e > 0)
 		{
@@ -101,7 +101,7 @@ void octant_8(int x1, int y1, int x2, int y2, t_env *c)
 	dy = dy * 2;
 	while (x1 != x2)
 	{
-		mlx_pixel_put(c->mlx, c->win, x1, y1, 0x7FFF00);
+		mlx_pixel_wput(c, x1, y1, c->color);
 		e = e + dy;
 		if (e < 0)
 		{

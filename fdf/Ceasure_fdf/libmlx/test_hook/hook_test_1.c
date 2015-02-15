@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/29 18:20:07 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/02 07:12:19 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/12 19:22:03 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void trace(int x1, int y1, int x2, int y2, t_env *c)
     mlx_pixel_put(c->mlx, c->win, x1 - y2, y1 - x2, 0x82C46C);
 }
 
-void ring(int x1, int y1, int r, t_env *c)
+void put_ring_ArB(float x1, float y1, float r, t_env *c)
 {
     int x2;
     int y2;

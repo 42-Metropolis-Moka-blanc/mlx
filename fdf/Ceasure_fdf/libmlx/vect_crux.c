@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/30 12:03:30 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/02 11:23:53 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/15 06:16:07 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void crux_x(int x1, int y1, int x2, t_env *c)
 	{
 		while (x1 != x2)
 		{
-			mlx_pixel_put(c->mlx, c->win, x1, y1, 0xF4661B);
+			mlx_pixel_wput(c, x1, y1, c->color);
 			x1++;
 		}
 	}
@@ -29,7 +29,7 @@ void crux_x(int x1, int y1, int x2, t_env *c)
 	{
 		while (x1 != x2)
 		{
-			mlx_pixel_put(c->mlx, c->win, x1, y1, 0xF4661B);
+			mlx_pixel_wput(c, x1, y1, c->color);
 			x1--;
 		}
 	}
@@ -44,7 +44,7 @@ void crux_y(int x1, int y1, int y2, t_env *c)
 	{
 		while (y1 != y2)
 		{
-			mlx_pixel_put(c->mlx, c->win, x1, y1, 0xF4661B);
+			mlx_pixel_wput(c, x1, y1, c->color);
 			y1++;
 		}
 	}
@@ -52,7 +52,7 @@ void crux_y(int x1, int y1, int y2, t_env *c)
 	{
 		while (y1 != y2)
 		{
-			mlx_pixel_put(c->mlx, c->win, x1, y1, 0xF4661B);
+			mlx_pixel_wput(c, x1, y1, c->color);
 			y1--;
 		}
 	}
