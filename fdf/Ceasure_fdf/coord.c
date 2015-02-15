@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/02 10:32:09 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/02 16:21:35 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/15 07:36:45 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_coord     *ft_new_coord(int x, int y, int z, int size_x, int size_y)
 	coord->size_x = (size_x);
 	coord->size_y = (size_y);
 	coord->z = z;
-	coord->x = x;//* INC;
-	coord->y = y;//  * INC;
+	coord->x = x - size_x/2;//   MUAHAHAHAHAHAAAAAAA !!!!!
+	coord->y = y - size_y/2;//   MUAHAHAHAHAHAAAAAAA !!!!!
 	return (coord);
 }
 
