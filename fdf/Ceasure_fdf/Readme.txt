@@ -6,7 +6,7 @@
      By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+          
                                                   +#+#+#+#+#+   +#+             
      Created: 2015/02/15 07:49:55 by cglavieu          #+#    #+#               
-     Updated: 2015/02/15 08:02:08 by cglavieu         ###   ########.fr         
+     Updated: 2015/02/16 14:39:22 by cglavieu         ###   ########.fr         
                                                                                 
 ********************************************************************************
 
@@ -19,12 +19,12 @@ Changelogs :
 		 - Gestion affichage ok
 		 - Gestion deplacement/zoom ok
 		 - Gestion rotation centree ok
+		 - Gestion rotation sur l'axe x ok
 		 - Gestion mode image ok
+		 - Segfault sur map pylone ok
+	 	 - Gestion de la couleur en fonction de z ok
 
 Travail restant :
 
-		 - Segfault sur map pylone
-	 	 - Gestion de la couleur en fonction de z
-		 - Gestion rotation sur l'axe x
 		 - Implementation Z-buffer
 		 - Mise a la norme
