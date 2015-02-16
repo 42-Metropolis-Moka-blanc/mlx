@@ -1,0 +1,3 @@
+make -C libmlx re
+gcc -o test1 main.c hook.c draw.c coord.c libft/libft.a libmlx/libmlx.a -L/usr/X11/lib -lmlx -lXext -lX11 -I /opt/X11/include/X11
+./test1 ../test_maps/heart.fdf

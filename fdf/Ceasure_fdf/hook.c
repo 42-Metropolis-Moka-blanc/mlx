@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/02 10:29:54 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/15 06:25:37 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/16 01:43:21 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 
 int loop_hook(t_env *e)
 {
+	mlx_destroy_image(e->mlx, e->img);
+	e->img = mlx_new_image(e->mlx, 1920, 1080);
+	e->data = mlx_get_data_addr(e->img, &(e->bpp), &(e->s_line),
+								&(e->endian));
 	e->rot += (2*M_PI/1080);
 	draw(e);
-	if (e->img)
-		mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
+	// if (e->img)
+	// 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	// mlx_destroy_image(e->mlx, e->img);
 	// usleep(50000);
 	return(0);

@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/12 19:28:31 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/15 06:22:20 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/16 03:11:03 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,21 @@ void mlx_pixel_wput(t_env *e, int x, int y, int color)
 		place += x * 4;
 		if (place < ((1920 * 1080) * (sizeof(char) * 4)))
 		{
-			e->data[place] = e->z + 1 * 255;
-			e->data[place + 1] = e->z + 1 * 255 / 100;
-			e->data[place + 2] = e->z + 1 * 255 / 5;
-			e->data[place + 3] = e->z + 1 * 255 / 20;
+			if (e->inc->z != 0)
+			{
+				e->data[place] = 255;      // bleu
+				e->data[place + 1] = 000;  // vert
+				e->data[place + 2] = 000;  // rouge
+				e->data[place + 3] = 000;  
+			}
+			else
+			{
+				e->data[place] = 255;      // bleu
+				e->data[place + 1] = 255;  // vert
+				e->data[place + 2] = 000;  // rouge
+				e->data[place + 3] = 000;  
+			}
+
 		}
 	}
 
