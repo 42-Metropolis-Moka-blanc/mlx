@@ -6,7 +6,7 @@
 /*   By: cglavieu <cglavieu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 03:47:46 by cglavieu          #+#    #+#             */
-/*   Updated: 2015/02/13 20:31:19 by cglavieu         ###   ########.fr       */
+/*   Updated: 2015/02/16 11:50:23 by cglavieu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,28 @@ void		vect(float x, float y, float x2, float y2, t_env *c)
 	else
 		y_based_line(coor, c);
 }
+
+// void BresenhamLine(int x0, int y0, int x1, int y1) 
+// {
+// 	int dx, dy, incE, incNE, d, x, y;
+// 	dx = x1 - x0; 
+// 	dy = y1 - y0;
+// 	d = 2*dy - dx;
+// 	incE = 2*dy;
+// 	incNE = 2*(dy - dx);
+// 	x = x0; 
+// 	y = y0;
+// 	WritePixel(x, y); /* write start pixel */
+// 	while (x < x1) 
+// 	{
+// 		if (d <= 0) /* choose E */
+// 			d += incE;
+// 		else 
+// 		{
+// 			d += incNE; /* choose NE */
+// 			y++;
+// 		}
+// 		x++;
+// 		WritePixel(x, y);
+// 	}
+// }
